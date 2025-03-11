@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Your Name - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hero {
+  position: relative;
+  text-align: center;
+  height: 100vh; /* Full screen height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#typing-text {
+  font-size: 20px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  border-right: 2px solid black; /* Cursor effect */
+  padding-right: 5px;
+}
+
+/* Fixed Button Below the Text */
+.btn {
+  position: absolute;
+  bottom: 30px; /* Keeps it fixed near the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #007bff;
+  color: white;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="hero">
+      <h1>Hi! I'm <span>Likhil</span><br>Bachanaboina</h1>
+      <p id="typing-text"></p>
+      <a href="#contact" class="btn">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>Hi! I'm [Your Name], a passionate web developer with experience in front-end and back-end technologies. I love creating clean and user-friendly websites and applications.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2>My Projects</h2>
+      <div class="project-grid">
+        <div class="project" data-aos="slide-up">
+          <img src="project1.jpg" alt="Project 1">
+          <h3>Project 1</h3>
+          <p>A description of the project goes here.</p>
+          <a href="#" class="btn">View Project</a>
+        </div>
+        <div class="project" data-aos="slide-up">
+          <img src="project2.jpg" alt="Project 2">
+          <h3>Project 2</h3>
+          <p>A description of the project goes here.</p>
+          <a href="#" class="btn">View Project</a>
+        </div>
+        <div class="project" data-aos="slide-up">
+          <img src="project3.jpg" alt="Project 3">
+          <h3>Project 3</h3>
+          <p>A description of the project goes here.</p>
+          <a href="#" class="btn">View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <form action="#" method="post">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 [Your Name]. All Rights Reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

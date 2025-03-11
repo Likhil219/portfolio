@@ -1,0 +1,241 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(74, 35, 35);
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Navbar */
+  header {
+    
+    color: white;
+    padding: 1rem;
+    margin-left: 590px;
+
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    font-family: "Dancing Script", cursive;
+  }
+  
+  nav ul li {
+    display: inline;
+    width: 100%;
+    color: rgba(171, 25, 25, 0.1);
+  
+  }
+  
+  nav ul li a {
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+  
+  nav ul li a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+  }
+  
+  /* Hero Section */
+  #home {
+
+    color: white;
+    padding: 6rem 0;
+    text-align: center;
+  }
+
+  .hero{
+    margin-right: 40px;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero .btn {
+    background-color: #ff6347;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  
+  .hero .btn:hover {
+    background-color: #e5533e;
+  }
+  #typing-text {
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    border-right: 2px solid black; /* Cursor effect */
+   
+  }
+  
+  
+  /* About Section */
+  #about {
+    padding: 4rem 0;
+   
+    text-align: center;
+  }
+  
+  #about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  #about p {
+    font-size: 1.2rem;
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  /* Projects Section */
+  #projects {
+    
+    padding: 4rem 0;
+  }
+  
+  #projects h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  /* Add a sliding animation for projects */
+.project {
+    opacity: 0;
+    transform: translateX(-100px); /* Start off-screen */
+    transition: opacity 1s, transform 1s;
+  }
+  
+  .project.slide-up {
+    opacity: 1;
+    transform: translateX(0); /* Slide to its normal position */
+  }
+  
+  /* Add the slide-up effect */
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  
+  .project {
+    background-color: #fff;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .project img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  
+  .project h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .project p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .project a {
+    color: #ff6347;
+    font-size: 1.2rem;
+  }
+  
+  .project a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Contact Section */
+  #contact {
+    
+    padding: 4rem 0;
+    text-align: center;
+  }
+  
+  #contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  form input,
+  form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  form button {
+    background-color: #ff6347;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  
+  form button:hover {
+    background-color: #e5533e;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
