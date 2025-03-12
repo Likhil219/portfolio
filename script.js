@@ -21,7 +21,7 @@ projects.forEach(project => {
 
 /* Home section */
 
-const textArray = ["Web | Full Stack Developer","Web Developer"];
+const textArray = ["Front-end Developer","Back-end Developer","Full Strack Developer"];
 let textIndex = 0; 
 let charIndex = 0;
 let isDeleting = false;
@@ -52,3 +52,28 @@ function typeEffect() {
 }
 
 document.addEventListener("DOMContentLoaded", typeEffect);
+
+/*  ------------------ About section---------------*/
+
+window.addEventListener("scroll", function () {
+  let line = document.getElementById("line");
+  let content = document.getElementById("content");
+
+  if (window.scrollY > 100) { // Trigger after scrolling 100px
+      line.classList.add("show-line"); 
+      content.classList.add("show-content"); 
+  } else {
+      line.classList.remove("show-line"); 
+      content.classList.remove("show-content"); 
+  }
+});
+document.getElementById("moreBtn").addEventListener("click", function () {
+  let extraText = document.getElementById("extraText");
+  if (extraText.style.display === "none") {
+      extraText.style.display = "block";
+      this.textContent = "Less";
+  } else {
+      extraText.style.display = "none";
+      this.textContent = "More";
+  }
+});

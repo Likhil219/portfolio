@@ -1,125 +1,111 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Your Name - Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .hero {
-  position: relative;
-  text-align: center;
-  height: 100vh; /* Full screen height */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Animation with More Text</title>
+    <style>
+        body {
+            height: 200vh; /* Just for scrolling effect */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-#typing-text {
-  font-size: 20px;
-  font-weight: bold;
-  white-space: nowrap;
-  overflow: hidden;
-  display: inline-block;
-  border-right: 2px solid black; /* Cursor effect */
-  padding-right: 5px;
-}
+        /* Container to position elements */
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
 
-/* Fixed Button Below the Text */
-.btn {
-  position: absolute;
-  bottom: 30px; /* Keeps it fixed near the bottom */
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #007bff;
-  color: white;
-  padding: 12px 25px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-}
+        /* Vertical Line (Medium Height) */
+        .vertical-line {
+            position: absolute;
+            left: -20px; /* Start off-screen */
+            height: 100px; /* Medium height */
+            width: 3px;
+            background-color: black;
+            transition: left 0.5s ease-in-out;
+        }
 
-.btn:hover {
-  background-color: #0056b3;
-}
-  </style>
+        /* Paragraph */
+        .content {
+            position: absolute;
+            left: -300px; /* Start off-screen */
+            width: 250px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+            transition: left 0.5s ease-in-out 0.5s; /* Appears after line */
+        }
+
+        /* Hidden text */
+        .extra-text {
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* Button */
+        .more-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 5px;
+            border-radius: 3px;
+        }
+
+        /* Class to animate */
+        .show-line {
+            left: 50px; /* Moves into view */
+        }
+
+        .show-content {
+            left: 60px; /* Moves into view right at the end of the line */
+        }
+    </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <!-- Home Section -->
-  <section id="home">
-    <div class="hero">
-      <h1>Hi! I'm <span>Likhil</span><br>Bachanaboina</h1>
-      <p id="typing-text"></p>
-      <a href="#contact" class="btn">Get in Touch</a>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about">
     <div class="container">
-      <h2>About Me</h2>
-      <p>Hi! I'm [Your Name], a passionate web developer with experience in front-end and back-end technologies. I love creating clean and user-friendly websites and applications.</p>
+        <div class="vertical-line" id="line"></div>
+        <div class="content" id="content">
+            <p>This is the short paragraph.</p>
+         
     </div>
-  </section>
 
-  <section id="projects">
-    <div class="container">
-      <h2>My Projects</h2>
-      <div class="project-grid">
-        <div class="project" data-aos="slide-up">
-          <img src="project1.jpg" alt="Project 1">
-          <h3>Project 1</h3>
-          <p>A description of the project goes here.</p>
-          <a href="#" class="btn">View Project</a>
-        </div>
-        <div class="project" data-aos="slide-up">
-          <img src="project2.jpg" alt="Project 2">
-          <h3>Project 2</h3>
-          <p>A description of the project goes here.</p>
-          <a href="#" class="btn">View Project</a>
-        </div>
-        <div class="project" data-aos="slide-up">
-          <img src="project3.jpg" alt="Project 3">
-          <h3>Project 3</h3>
-          <p>A description of the project goes here.</p>
-          <a href="#" class="btn">View Project</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contact Me</h2>
-      <form action="#" method="post">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </div>
-  </section>
+    <script>
+        window.addEventListener("scroll", function () {
+            let line = document.getElementById("line");
+            let content = document.getElementById("content");
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 [Your Name]. All Rights Reserved.</p>
-  </footer>
-  <script src="script.js"></script>
+            if (window.scrollY > 100) { // Trigger after scrolling 100px
+                line.classList.add("show-line"); 
+                content.classList.add("show-content"); 
+            } else {
+                line.classList.remove("show-line"); 
+                content.classList.remove("show-content"); 
+            }
+        });
+
+        document.getElementById("moreBtn").addEventListener("click", function () {
+            let extraText = document.getElementById("extraText");
+            if (extraText.style.display === "none") {
+                extraText.style.display = "block";
+                this.textContent = "Less";
+            } else {
+                extraText.style.display = "none";
+                this.textContent = "More";
+            }
+        });
+    </script>
+
 </body>
 </html>
