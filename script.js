@@ -21,7 +21,7 @@ projects.forEach(project => {
 
 /* Home section */
 
-const textArray = ["Front-end Developer","Back-end Developer","Full Strack Developer"];
+const textArray = ["Front-end Developer","Back-end Developer","Full Stack Developer"];
 let textIndex = 0; 
 let charIndex = 0;
 let isDeleting = false;
@@ -76,4 +76,23 @@ document.getElementById("moreBtn").addEventListener("click", function () {
       extraText.style.display = "none";
       this.textContent = "More";
   }
+});
+/* ----------------- skills -----------------*/
+
+document.addEventListener("DOMContentLoaded", function() {
+  const gridItems = document.querySelectorAll(".grid-item img");
+  const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+              setTimeout(() => {
+                  entry.target.classList.add("visible");
+              }, index * 300); // Delay each image appearance by 300ms
+              observer.unobserve(entry.target);
+          }
+      });
+  }, { threshold: 0.5 });
+
+  gridItems.forEach(item => {
+      observer.observe(item);
+  });
 });

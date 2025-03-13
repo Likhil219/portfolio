@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: rgb(74, 35, 35);
+    overflow-x: hidden;
   }
   
   a {
@@ -184,7 +185,33 @@ body {
         .show-content {
             left: 560px; /* Moves into view right at the end of the line */
         }
-  
+
+      /*------------------ techical skills---------------*/
+      h2 {
+        text-align: center;
+    }
+    .scroll-container {
+        overflow: hidden;
+        width: 60%;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        text-align: center;
+    }
+    .grid-item img {
+        width: 90px;
+        height: 90px;
+        object-fit: contain;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .grid-item img.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
   /* ------------Projects Section -----------*/
   #projects {
     

@@ -3,109 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scroll Animation with More Text</title>
+    <title>Programming Languages Grid</title>
+    
     <style>
         body {
-            height: 200vh; /* Just for scrolling effect */
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #f4f4f4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow-x: hidden;
         }
-
-        /* Container to position elements */
         .container {
-            position: relative;
-            height: 100vh;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            height: 100vh;
         }
-
-        /* Vertical Line (Medium Height) */
-        .vertical-line {
-            position: absolute;
-            left: -20px; /* Start off-screen */
-            height: 100px; /* Medium height */
-            width: 3px;
-            background-color: black;
-            transition: left 0.5s ease-in-out;
+        h2 {
+            text-align: center;
         }
-
-        /* Paragraph */
-        .content {
-            position: absolute;
-            left: -300px; /* Start off-screen */
-            width: 250px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px;
-            border-radius: 5px;
-            transition: left 0.5s ease-in-out 0.5s; /* Appears after line */
+        .scroll-container {
+            overflow: hidden;
+            width: 60%;
         }
-
-        /* Hidden text */
-        .extra-text {
-            display: none;
-            margin-top: 10px;
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            text-align: center;
         }
-
-        /* Button */
-        .more-btn {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            margin-top: 5px;
-            border-radius: 3px;
+        .grid-item img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: opacity 1s ease-out, transform 1s ease-out;
         }
-
-        /* Class to animate */
-        .show-line {
-            left: 50px; /* Moves into view */
-        }
-
-        .show-content {
-            left: 60px; /* Moves into view right at the end of the line */
+        .grid-item img.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
     </style>
 </head>
 <body>
-
+    <section id="skills">
     <div class="container">
-        <div class="vertical-line" id="line"></div>
-        <div class="content" id="content">
-            <p>This is the short paragraph.</p>
-         
+        <h2>| <span>Technical Skills</span> |</h2>
+        <div class="scroll-container">
+            <div class="grid-container" id="gridContainer">
+                <div class="grid-item"><img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" class="img-fluid" alt="Java"></div>
+                <div class="grid-item"><img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" class="img-fluid" alt="HTML"></div>
+                <div class="grid-item"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" class="img-fluid" alt="CSS"></div>
+                <div class="grid-item"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" class="img-fluid" alt="React"></div>
+                <div class="grid-item"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" class="img-fluid" alt="JavaScript"></div>
+                <div class="grid-item"><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Sass_Logo_Color.svg" class="img-fluid" alt="Sass"></div>
+                <div class="grid-item"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" class="img-fluid" alt="Bootstrap"></div>
+            </div>
+        </div>
     </div>
-
+    
     <script>
-        window.addEventListener("scroll", function () {
-            let line = document.getElementById("line");
-            let content = document.getElementById("content");
+        document.addEventListener("DOMContentLoaded", function() {
+            const gridItems = document.querySelectorAll(".grid-item img");
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add("visible");
+                        }, index * 300); // Delay each image appearance by 300ms
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
 
-            if (window.scrollY > 100) { // Trigger after scrolling 100px
-                line.classList.add("show-line"); 
-                content.classList.add("show-content"); 
-            } else {
-                line.classList.remove("show-line"); 
-                content.classList.remove("show-content"); 
-            }
-        });
-
-        document.getElementById("moreBtn").addEventListener("click", function () {
-            let extraText = document.getElementById("extraText");
-            if (extraText.style.display === "none") {
-                extraText.style.display = "block";
-                this.textContent = "Less";
-            } else {
-                extraText.style.display = "none";
-                this.textContent = "More";
-            }
+            gridItems.forEach(item => {
+                observer.observe(item);
+            });
         });
     </script>
-
 </body>
 </html>
